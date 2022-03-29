@@ -17,7 +17,7 @@ public class ProductDTO {
     @Size(message = "name must be equal to or lower than 300", min = 1, max = 300)
     private String name;
 
-    @NotNull(message = "name is required")
+    @NotNull(message = "price is required")
     @Min(0)
     private BigDecimal price;
 }
