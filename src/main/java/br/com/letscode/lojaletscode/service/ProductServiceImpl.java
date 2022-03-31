@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -19,6 +20,7 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Transactional
     @Override
     public Page<Product> getAllProducts(Pageable pageable) {
@@ -42,6 +44,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(product);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @Transactional
     @Override
     public Product updateProduct(Long id, ProductDTO request) {

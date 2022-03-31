@@ -41,11 +41,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.sipios</groupId>
-			<artifactId>spring-search</artifactId>
-			<version>0.2.0</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -68,6 +66,17 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>0.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>br.com.letscode</groupId>
+			<artifactId>loja-letscode</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin.external.google</groupId>
+			<artifactId>android-json</artifactId>
+			<version>0.0.20131108.vaadin1</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
