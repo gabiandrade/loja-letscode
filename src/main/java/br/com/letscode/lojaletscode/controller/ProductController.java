@@ -1,7 +1,9 @@
 package br.com.letscode.lojaletscode.controller;
 
 import br.com.letscode.lojaletscode.domain.Product;
+import br.com.letscode.lojaletscode.dto.ProductCategoryDTO;
 import br.com.letscode.lojaletscode.dto.ProductDTO;
+import br.com.letscode.lojaletscode.repository.ProductRepository;
 import br.com.letscode.lojaletscode.resources.ProductResponse;
 import br.com.letscode.lojaletscode.service.ProductServiceImpl;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,7 @@ import javax.validation.Valid;
 public class ProductController {
 
     private final ProductServiceImpl productService;
+    private final ProductRepository productRepository;
 
 
     /* url  ?page=0&size=2&sort=name,asc */
@@ -61,4 +64,9 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
+
+    @GetMapping()
+    public Page<ProductCategoryDTO> findByProductAndCategory(Pageable pageable){
+        return productRepository.findByProductAndCategory(pageable);
+    }
 }
