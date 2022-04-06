@@ -71,4 +71,10 @@ public class ProductController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/search")
+    public Page<Product> findAllProductsByFilter(ProductDTO dto, Pageable pageable) {
+        return productService.getAllProductsByFilter(dto, pageable);
+
+    }
+
 }

@@ -4,6 +4,7 @@ import br.com.letscode.lojaletscode.domain.Product;
 import br.com.letscode.lojaletscode.dto.ProductDTO;
 import br.com.letscode.lojaletscode.exception.NotFoundException;
 import br.com.letscode.lojaletscode.repository.ProductRepository;
+import br.com.letscode.lojaletscode.repository.specification.ProductSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import java.math.BigDecimal;
 public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductSpecification productSpecification;
 
     @PreAuthorize("hasRole('ROLE_USER')")
     @Transactional
@@ -57,6 +59,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProduct(Product product) {
         productRepository.delete(product);
+    }
+
+    @Override
+    public Page<Product> getAllProductsByFilter(ProductDTO dto, Pageable pageable) {
+        return productRepository.findAll(productSpecification.productSpecification(dto), pageable);
     }
 
 }

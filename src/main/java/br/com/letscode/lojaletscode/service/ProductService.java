@@ -19,4 +19,5 @@ public interface ProductService {
 
     void deleteProduct(Product product);
 
+    Page<Product> getAllProductsByFilter(ProductDTO dto, Pageable pageable);
 }
